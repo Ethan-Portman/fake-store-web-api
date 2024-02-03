@@ -1,0 +1,20 @@
+openapi: "3.1.0"
+info:
+  title: FakeStore API
+  version: "1.0.0"
+servers:
+- url: http://localhost:3004/v1
+  description: Fake Store API Dev Server 
+security: []
+paths: 
+  /plants:
+    description: All the plants
+    get:
+      summary: List all plants
+      operationId: getAllPlants
+      description: List all the plants available
+      responses:
+        "200":
+          description: All the plants
+        "400":
+          description: Bad Request.
