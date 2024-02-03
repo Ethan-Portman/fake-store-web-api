@@ -8,6 +8,10 @@ import apiRouter from './routes/api-router.js';
 
 const app = express();
 
+// Serve static files from the "public" directory
+app.use(express.static('public'));
+app.use('/images', express.static('images'));
+
 // Express middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
