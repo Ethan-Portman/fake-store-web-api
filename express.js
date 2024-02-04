@@ -1,3 +1,5 @@
+// express.js
+
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
@@ -5,6 +7,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 import apiRouter from './routes/api-router.js';
 
+// Adjust the import path for sequelize-config.js
+import sequelize from './sequelize-config.js';
 
 const app = express();
 
@@ -19,6 +23,14 @@ app.use(cookieParser());
 app.use(compression());
 app.use(morgan('dev'));
 app.use(cors());
+
+// Sync the database
+sequelize.sync().then(() => {
+    console.log("Database Synchronized");
+    app.listen(3004, () => {
+        console.log('Server is running on port 3004');
+    });
+});
 
 // Routing
 app.get('/', (req, res) => {
