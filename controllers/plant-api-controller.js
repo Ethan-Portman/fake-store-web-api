@@ -29,6 +29,10 @@ const getCustomerByUsername = async (req, res) => {
             replacements: { username: req.params.username },
             type: sequelize.QueryTypes.SELECT,
         });
+
+        if (customers.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
         res.status(200).json(customers);
     } catch (error) {
         console.log('Error fetching customers:', error);

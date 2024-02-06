@@ -18,6 +18,7 @@ paths:
           description: All the plants
         "400":
           description: Bad Request.
+          
   /customers:
     description: All the registered customers
     get:
@@ -28,5 +29,25 @@ paths:
         "200":
           description: All the customers
         "400":
+          description: Bad Request.
+
+  /customers/{username}:
+    get:
+      summary: Get customer by username
+      operationId: getCustomerByUsername
+      description: Get a customer by their username
+      parameters:
+        - in: path
+          name: username
+          description: The username of the customer
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer found
+        '401':
+          description: Customer not found
+        '400':
           description: Bad Request.
 
