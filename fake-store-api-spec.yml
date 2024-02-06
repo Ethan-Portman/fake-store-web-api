@@ -18,3 +18,15 @@ paths:
           description: All the plants
         "400":
           description: Bad Request.
+  /customers:
+    description: All the registered customers
+    get:
+      summary: List all customers
+      operationId: getAllCustomers
+      description: List all the registered customers
+      responses:
+        "200":
+          description: All the customers
+        "400":
+          description: Bad Request.
+

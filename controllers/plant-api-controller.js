@@ -1,4 +1,5 @@
 import Plant from '../models/Plant.js';
+import Customer from '../models/Customer.js';
 
 const getAllPlants = async (req, res) => {
     try {
@@ -10,9 +11,14 @@ const getAllPlants = async (req, res) => {
     }
 };
 
-// GET /plants Request Handler
-// const getAllPlants = (req, res) => {
-//     res.status(200).json(plantData);
-// };
+const getAllCustomers = async (req, res) => {
+    try {
+        const customers = await Customer.findAll();
+        res.status(200).json(customers);
+    } catch (error) {
+        console.log('Error fetching customers:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
 
-export { getAllPlants };
+export { getAllPlants, getAllCustomers };
